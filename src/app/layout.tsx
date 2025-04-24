@@ -10,7 +10,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Coming Soon",
+  title: "Tiago Defendi",
   description: "My website is under construction",
 };
 
