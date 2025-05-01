@@ -1,8 +1,7 @@
-import { Toaster } from "react-hot-toast";
-import ContactButton from "./Buttons/ContactButton";
-import CVButton from "./Buttons/CVButton";
+import ContactButton from "../Buttons/ContactButton";
+import CVButton from "../Buttons/CVButton";
 import Image from "next/image";
-import HeroImage from "../../public/hero.png";
+import HeroImage from "../../../public/hero.png";
 
 function Hero() {
     return (
@@ -39,8 +38,6 @@ function Hero() {
                     </div>
                 </article>
             </div>
-
-            <Toaster position="top-center" reverseOrder={false} />
         </section>
     );
 }
