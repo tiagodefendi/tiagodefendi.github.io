@@ -22,7 +22,7 @@ function Hero() {
 
                         <div className="flex flex-wrap gap-4">
                             <ContactButton className="bg-red-500 hover:bg-red-700 px-5 py-4 rounded-md text-white text-sm font-semibold" />
-                            <CVButton className="bg-slate-200 hover:bg-slate-300 hover:text-red-500 px-5 py-4 rounded-md text-sm font-semibold" />
+                            <CVButton className="bg-slate-200 text-gray-700 hover:bg-slate-300 border-2 border-slate-200 hover:border-red-500 hover:text-red-500 px-5 py-4 rounded-md text-sm font-semibold" />
                         </div>
                     </div>
 

@@ -1,3 +1,4 @@
+import ProjectsCarousel from "./ProjectsCarousel";
 import SkillsGlobe from "./SkillGlobe";
 import SkillsSection from "./SkillsSection";
 
@@ -6,6 +7,7 @@ function Portfolio() {
         <section>
             <SkillsSection />
             <SkillsGlobe />
+            <ProjectsCarousel />
         </section>
     )
 }
