@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import GradientBackground from "@/components/GradientBackground";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
-  variable: "--font-montserrat"
+  variable: "--font-reblo"
 });
 
 export const metadata: Metadata = {
-  title: "Coming Soon",
+  title: "Tiago Defendi",
   description: "My website is under construction",
 };
 
@@ -22,7 +21,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${montserrat.variable}`}>
       <body className={"font-sans relative"}>
-        <GradientBackground />
         {children}
       </body>
     </html>

@@ -1,20 +1,19 @@
 @import "tailwindcss";
 
-@layer {
-  .animate-gradient {
-    background-size: 400% 400%;
-    animation: gradient 10s ease infinite;
-  }
+body {
+    @apply bg-slate-100;
+}
 
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+.embla {
+    overflow: hidden;
+}
+
+.embla__container {
+    display: flex;
+}
+
+.embla__slide {
+    position: relative;
+    flex: 0 0 100%;
+    min-width: 0;
 }
