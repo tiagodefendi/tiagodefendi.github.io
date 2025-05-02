@@ -75,7 +75,6 @@ function SkillsGlobe() {
         const MAX_DISTANCE = RADIUS - ICON_SIZE / 2
         const SPEED = 0.8
 
-        // Posições iniciais aleatórias dentro do círculo
         const positions = iconElements.map(() => {
             const angle = Math.random() * Math.PI * 2
             const radius = Math.sqrt(Math.random()) * MAX_DISTANCE
@@ -85,7 +84,6 @@ function SkillsGlobe() {
             }
         })
 
-        // Velocidades iniciais
         const velocities = iconElements.map(() => {
             const angle = Math.random() * Math.PI * 2
             return {
@@ -98,11 +96,9 @@ function SkillsGlobe() {
             iconElements.forEach((el, i) => {
                 if (!el || hoverStates.current[i]) return
 
-                // Atualiza posição
                 positions[i].x += velocities[i].x
                 positions[i].y += velocities[i].y
 
-                // Verifica colisão com as bordas
                 const distance = Math.sqrt(positions[i].x ** 2 + positions[i].y ** 2)
                 if (distance >= MAX_DISTANCE) {
                     const normX = positions[i].x / distance
@@ -162,7 +158,9 @@ function SkillsGlobe() {
                                 <div
                                     key={i}
                                     ref={(el) => { iconRefs.current[i] = el }}
-                                    className={`absolute transition-all duration-300 ease-linear group ${selectedIcon === i ? 'z-30' : 'z-20'}`}
+                                    className={`absolute transition-opacity duration-300 ease-linear group ${
+                                        selectedIcon === i ? 'z-30' : 'z-20'
+                                    }`}
                                     style={{ width: 40, height: 40 }}
                                     onMouseEnter={() => handleIconHover(i, true)}
                                     onMouseLeave={() => handleIconHover(i, false)}
@@ -173,10 +171,11 @@ function SkillsGlobe() {
                                             alt={icon.alt}
                                             width={40}
                                             height={40}
-                                            className={`opacity-80 transition-all duration-300 ${selectedIcon === i
-                                                ? 'opacity-100 scale-110'
-                                                : 'hover:opacity-100'
-                                                }`}
+                                            className={`opacity-80 transition-all duration-300 ${
+                                                selectedIcon === i
+                                                    ? 'opacity-100 scale-110'
+                                                    : 'hover:opacity-100'
+                                            }`}
                                         />
                                         <div className={`absolute inset-0 rounded-full bg-gradient-to-br 
                                             from-yellow-200/30 to-transparent blur-[20px] transition-opacity 
@@ -186,20 +185,18 @@ function SkillsGlobe() {
                                 </div>
                             ))}
 
-                            {/* Efeito de vidro */}
                             <div className="absolute inset-0 rounded-full pointer-events-none shadow-[inset_0_0_30px_rgba(255,255,255,0.3)] backdrop-blur-[2px] border-[6px] border-white/20 z-10">
                                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/10 to-transparent mix-blend-overlay" />
                             </div>
                         </div>
 
-                        {/* Tooltip */}
                         {selectedIcon !== null && tooltipPosition && (
                             <div
                                 className="absolute bg-gray-800 text-white px-3 py-2 rounded-md text-sm shadow-lg transition-all z-50"
                                 style={{
                                     left: `${tooltipPosition.x}px`,
                                     top: `${tooltipPosition.y}px`,
-                                    transform: 'translate(-50%, -100%)',
+                                    transform: 'translate(-50%, -125%)',
                                 }}
                             >
                                 {icons[selectedIcon].alt}
@@ -210,7 +207,6 @@ function SkillsGlobe() {
                         <div className="absolute inset-0 rounded-full pointer-events-none shadow-[0_0_40px_15px_rgba(173,216,230,0.4)] z-0" />
                     </div>
 
-                    {/* Suporte completo */}
                     <div className="relative mx-auto w-[300px] -mt-2">
                         <div className="absolute left-1/2 -translate-x-1/2 -top-4 w-[20px] h-[50px] 
                             bg-gradient-to-b from-yellow-800 via-yellow-700 to-yellow-900 
@@ -236,7 +232,6 @@ function SkillsGlobe() {
                     </div>
                 </div>
 
-                {/* Coluna da direita - Texto */}
                 <div className="flex-1 flex items-center p-6">
                     <div className="max-w-md mx-auto">
                         <h2 className="text-3xl font-bold text-gray-800 mb-4">
