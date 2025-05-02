@@ -62,7 +62,7 @@ const Footer = () => {
             </div>
 
             <div className="border-t border-neutral-700 mt-10 pt-6 text-sm flex flex-col md:flex-row justify-between items-center">
-                <p>© 2024 Tiago Defendi. All rights reserved.</p>
+                <p>© 2025 Tiago Defendi. All rights reserved.</p>
                 <div className="flex space-x-4 mt-4 md:mt-0">
                     <Link href="#" className="hover:underline">Terms of Use</Link>
                     <Link href="#" className="hover:underline">Cookie Policy</Link>
