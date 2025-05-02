@@ -12,10 +12,10 @@ function Hero() {
                         <header className="space-y-2">
                             <h1 className="text-3xl md:text-4xl font-bold leading-tight">
                                 I am <span className="text-red-500">Tiago Defendi</span> <br />
-                                I'm a Full Stack Developer
+                                I&apos;m a Full Stack Developer
                             </h1>
                             <p className="text-sm lg:text-base text-gray-700">
-                                Welcome to my portfolio! I'm a Computer Science student and passionate about technology, automation, and problem-solving.
+                                Welcome to my portfolio! I&apos;m a Computer Science student and passionate about technology, automation, and problem-solving.
                                 Feel free to explore my projects and skills.
                             </p>
                         </header>

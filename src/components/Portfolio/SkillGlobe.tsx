@@ -239,7 +239,7 @@ function SkillsGlobe() {
                         </h2>
                         <p className="text-gray-600 leading-relaxed mb-4">
                             This interactive globe showcases my core technical skills.
-                            Each icon represents a technology I've mastered and used in
+                            Each icon represents a technology I&apos;ve mastered and used in
                             real-world projects. Observe how they move harmoniously, symbolizing
                             the integration between different tools in modern development.
                             Hover over the icons to view details and click to explore
