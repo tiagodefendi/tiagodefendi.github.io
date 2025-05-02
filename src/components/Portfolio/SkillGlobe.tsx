@@ -12,7 +12,7 @@ const icons = [
     { src: '/skillsGlobe/languages/typescript.svg', alt: 'TypeScript' },
     { src: '/skillsGlobe/languages/julia.svg', alt: 'Julia' },
     { src: '/skillsGlobe/languages/lua.svg', alt: 'Lua' },
-    { src: '/skillsGlobe/languages/r.svg', alt: 'Lua' },
+    { src: '/skillsGlobe/languages/r.svg', alt: 'R' },
     { src: '/skillsGlobe/languages/dart.svg', alt: 'Dart' },
 
     // database
@@ -42,13 +42,25 @@ const icons = [
     // { src: '/skillsGlobe/os/windows11.svg', alt: 'Windows' },
     // { src: '/skillsGlobe/os/linux.svg', alt: 'Linux' },
     // { src: '/skillsGlobe/os/android.svg', alt: 'Android' },
+
+    // ides
+    // { src: '/skillsGlobe/ide/vscode.svg', alt: 'VSCode' },
+    // { src: '/skillsGlobe/ide/github.svg', alt: 'GitHub' },
+    // { src: '/skillsGlobe/ide/postman.svg', alt: 'Postman' },
+    // { src: '/skillsGlobe/ide/intellij.svg', alt: 'IntelliJ' },
+    // { src: '/skillsGlobe/ide/pycharm.svg', alt: 'PyCharm' },
+    // { src: '/skillsGlobe/ide/replit.svg', alt: 'Replit' },
+    // { src: '/skillsGlobe/ide/rstudio.svg', alt: 'RStudio' },
+    // { src: '/skillsGlobe/ide/androidstudio.svg', alt: 'Android Studio' },
 ]
 
 function SkillsGlobe() {
     const containerRef = useRef<HTMLDivElement>(null)
+    const outerContainerRef = useRef<HTMLDivElement>(null)
     const iconRefs = useRef<(HTMLDivElement | null)[]>([])
     const hoverStates = useRef<boolean[]>(new Array(icons.length).fill(false))
     const [selectedIcon, setSelectedIcon] = useState<number | null>(null)
+    const [tooltipPosition, setTooltipPosition] = useState<{ x: number; y: number } | null>(null)
 
     useEffect(() => {
         const container = containerRef.current
@@ -116,6 +128,22 @@ function SkillsGlobe() {
         animate()
     }, [])
 
+    useEffect(() => {
+        if (selectedIcon !== null) {
+            const iconElement = iconRefs.current[selectedIcon]
+            const outerContainer = outerContainerRef.current
+            if (iconElement && outerContainer) {
+                const iconRect = iconElement.getBoundingClientRect()
+                const containerRect = outerContainer.getBoundingClientRect()
+                const x = iconRect.left - containerRect.left + iconRect.width / 2
+                const y = iconRect.top - containerRect.top - 10
+                setTooltipPosition({ x, y })
+            }
+        } else {
+            setTooltipPosition(null)
+        }
+    }, [selectedIcon])
+
     const handleIconHover = (index: number, isHovered: boolean) => {
         hoverStates.current[index] = isHovered
         setSelectedIcon(isHovered ? index : null)
@@ -124,9 +152,8 @@ function SkillsGlobe() {
     return (
         <section className="w-full px-4 py-8 mb-8">
             <div className="flex flex-col md:flex-row gap-8 max-w-6xl mx-auto">
-                {/* Coluna da esquerda - Globo + Suporte */}
                 <div className="flex-1 flex flex-col items-center">
-                    <div className="relative w-[400px] h-[400px]">
+                    <div className="relative w-[400px] h-[400px]" ref={outerContainerRef}>
                         <div
                             ref={containerRef}
                             className="relative w-full h-full bg-blue-100 rounded-full shadow-inner overflow-hidden"
@@ -135,8 +162,7 @@ function SkillsGlobe() {
                                 <div
                                     key={i}
                                     ref={(el) => { iconRefs.current[i] = el }}
-                                    className={`absolute transition-all duration-300 ease-linear group ${selectedIcon === i ? 'z-30' : 'z-20' // Controle dinâmico do z-index
-                                        }`}
+                                    className={`absolute transition-all duration-300 ease-linear group ${selectedIcon === i ? 'z-30' : 'z-20'}`}
                                     style={{ width: 40, height: 40 }}
                                     onMouseEnter={() => handleIconHover(i, true)}
                                     onMouseLeave={() => handleIconHover(i, false)}
@@ -152,7 +178,6 @@ function SkillsGlobe() {
                                                 : 'hover:opacity-100'
                                                 }`}
                                         />
-                                        {/* Efeito de luz */}
                                         <div className={`absolute inset-0 rounded-full bg-gradient-to-br 
                                             from-yellow-200/30 to-transparent blur-[20px] transition-opacity 
                                             duration-300 ${selectedIcon === i ? 'opacity-100' : 'opacity-0'}`}
@@ -161,11 +186,26 @@ function SkillsGlobe() {
                                 </div>
                             ))}
 
-                            {/* Efeito de vidro (mantido com z-index menor) */}
+                            {/* Efeito de vidro */}
                             <div className="absolute inset-0 rounded-full pointer-events-none shadow-[inset_0_0_30px_rgba(255,255,255,0.3)] backdrop-blur-[2px] border-[6px] border-white/20 z-10">
                                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/10 to-transparent mix-blend-overlay" />
                             </div>
                         </div>
+
+                        {/* Tooltip */}
+                        {selectedIcon !== null && tooltipPosition && (
+                            <div
+                                className="absolute bg-gray-800 text-white px-3 py-2 rounded-md text-sm shadow-lg transition-all z-50"
+                                style={{
+                                    left: `${tooltipPosition.x}px`,
+                                    top: `${tooltipPosition.y}px`,
+                                    transform: 'translate(-50%, -100%)',
+                                }}
+                            >
+                                {icons[selectedIcon].alt}
+                                <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-2 h-2 bg-gray-800 transform rotate-45 translate-y-1/2" />
+                            </div>
+                        )}
 
                         <div className="absolute inset-0 rounded-full pointer-events-none shadow-[0_0_40px_15px_rgba(173,216,230,0.4)] z-0" />
                     </div>
