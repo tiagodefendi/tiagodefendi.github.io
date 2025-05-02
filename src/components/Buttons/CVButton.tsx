@@ -3,10 +3,11 @@
 import CustomButton from "./CustomButton"
 
 interface ButtonProps {
-    className?: string
+    className?: string,
+    buttonName?: string
 }
 
-const CVButton = ({ className}: ButtonProps) => {
+const CVButton = ({ className, buttonName="Download CV"}: ButtonProps) => {
     const onClick = () => {
         const link = document.createElement("a")
         link.href = "/cv.pdf"
@@ -18,7 +19,7 @@ const CVButton = ({ className}: ButtonProps) => {
         <CustomButton
             onClick={onClick}
             className={className}
-            buttonName="Download CV"
+            buttonName={buttonName}
         />
     )
 }
