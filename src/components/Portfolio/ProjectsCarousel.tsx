@@ -22,11 +22,11 @@ const projects = [
         github: 'https://github.com/tiagodefendi/CrazyIdeas'
     },
     {
-        title: 'Lucy - W.I.P',
+        title: 'Lucy',
         description: 'Custom Discord bot featuring AI-powered utilities for server management, entertainment, and community engagement',
         image: '/projectsCarousel/lucy.png',
         tech: ['Python', 'Discord API', 'AI Integration', 'Automation'],
-        link: 'https://discord.com/invite/3FevfNV2sd',
+        link: 'https://discord.com/oauth2/authorize?client_id=891407921957720094&scope=bot%20applications.commands&permissions=8',
         github: 'https://github.com/tiagodefendi/Lucy'
     },
     {
