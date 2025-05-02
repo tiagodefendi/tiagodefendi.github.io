@@ -14,7 +14,7 @@ const ContactButton = ({ className, buttonName="Contact Me!"}: ContactButtonProp
 
         navigator.clipboard.writeText(email)
             .then(() => toast.success("Email copied to clipboard!"))
-            .catch((err) => toast.error("Failed to copy email"))
+            .catch(() => toast.error("Failed to copy email"));
 
         window.open(`mailto:${email}?subject=Contact via website&body=Hello Tiago,%0A%0AI am reaching out through your website. I would like to discuss [insert the reason for your message].%0A%0ABest regards,%0A[Your name]`, '_blank')
     }
